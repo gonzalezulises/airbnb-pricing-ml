@@ -1,0 +1,3 @@
+Host ID
+Review Scores Rating
+Review Scores Accuracy
