@@ -1317,3 +1317,11 @@ sklearn.utils._param_validation.InvalidParameterError: The 'max_features' parame
  0.72883602        nan 0.70052516 0.72492218 0.7069769  0.72864022]
   warnings.warn(
 
+2025-05-10 13:55:41,115:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-05-10 13:55:41,115:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-05-10 13:55:41,115:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-05-10 13:55:41,115:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
