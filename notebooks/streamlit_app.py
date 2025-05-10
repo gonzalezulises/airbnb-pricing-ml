@@ -1,15 +1,19 @@
-# streamlit_app.py
+# streamlit_app.py - versión robusta con Path
 import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+from pathlib import Path
+
+# Calcular rutas absolutas desde la ubicación del script
+base_path = Path(__file__).resolve().parents[1]
+model_path = base_path / "models" / "final_model_stacked.pkl"
+vars_path = base_path / "models" / "vars_seleccionadas.txt"
 
 # Cargar modelo entrenado
-model_path = "../models/final_model_stacked.pkl"
 st_model = joblib.load(model_path)
 
 # Cargar columnas usadas en entrenamiento
-vars_path = "../models/vars_seleccionadas.txt"
 with open(vars_path) as f:
     columnas_modelo = f.read().splitlines()
 
