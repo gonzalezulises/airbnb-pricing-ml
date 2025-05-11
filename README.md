@@ -23,23 +23,19 @@ airbnb-pricing-ml/
 └── README.md # Este archivo
 
 ```
-## Requerimientos del entorno
-
-Proyecto ejecutado y probado con Python 3.12 y las siguientes dependencias clave:
-
-- numpy==1.23.*
-- pandas==1.5.*
-- scipy==1.9.*
-- matplotlib==3.6.*
-- seaborn==0.12.*
-- plotly==5.13.*
-- scikit-learn==1.1.3
-- jupyterlab==3.4.*
-- xgboost==1.7.*
-- lightgbm==4.6.0
-- ruff==0.0.270
-
----
+### 📦 Versiones de librerías utilizadas
+```
+→ Python        : 3.9.2  
+→ pandas        : 1.5.3  
+→ numpy         : 1.26.4  
+→ scikit-learn  : 1.4.2  
+→ matplotlib    : 3.7.5  
+→ seaborn       : 0.13.2  
+→ plotly        : 5.22.0  
+→ scipy         : 1.11.4  
+→ statsmodels   : 0.14.2  
+→ joblib        : 1.3.2  
+```
 
 ##  Objetivo
 
