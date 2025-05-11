@@ -4,6 +4,7 @@ Este proyecto tiene como objetivo construir un modelo de regresión para predeci
 
 ## Estructura del proyecto
 
+```
 airbnb-pricing-ml/
 ├── data/
 │ ├── raw/ # Datos originales (cargados localmente)
@@ -21,7 +22,7 @@ airbnb-pricing-ml/
 ├── requirements.txt # Dependencias del entorno
 └── README.md # Este archivo
 
-
+```
 ## Requerimientos del entorno
 
 Proyecto ejecutado y probado con Python 3.12 y las siguientes dependencias clave:
@@ -39,30 +40,106 @@ xgboost==1.7.*
 lightgbm==4.6.0
 ruff==0.0.270
 
-Procedimiento realizado hasta ahora
+---
 
-- Inicialización del proyecto
+## 🎯 Objetivo
 
-  -Creación desde cero con entorno virtual (venv)
+Predecir el precio logarítmico (`Log_Price`) de un alojamiento tipo Airbnb en base a sus características más relevantes, utilizando técnicas modernas de machine learning y análisis exploratorio de datos.
 
-  -Proyecto versionado en Git y sincronizado con GitHub
+---
 
-  -Configuración de .gitignore para excluir archivos innecesarios
+## 🧪 Flujo de trabajo
 
-- Instalación de dependencias
+### 1. Exploración y preparación de datos (`01. Exploracion...ipynb`)
 
-  -Se instaló requirements.txt con librerías científicas, ML y herramientas de estilo
+- Limpieza de columnas con alto porcentaje de valores faltantes
+- Transformación de fechas y extracción de variables temporales
+- Ingeniería de características: ratios, flags y log transformaciones
+- Imputación de valores faltantes
+- Detección de outliers mediante métodos estadísticos (Z-score, IQR, Isolation Forest)
+- Análisis de colinealidad y reducción mediante VIF
 
-  -Se resolvieron problemas de compilación de lightgbm mediante brew install cmake libomp (en macOS)
+### 2. Modelado y validación (`02. Entrenamiento...ipynb`)
 
-- Estructura base generada
+- Comparación de modelos: `Linear Regression`, `Random Forest`, `Gradient Boosting`
+- Entrenamiento sobre variable objetivo transformada (`Log_Price`)
+- Evaluación con métricas: `R²`, `RMSE`, `MAE`
+- Selección final del modelo basado en desempeño
+- Exportación del modelo entrenado y variables seleccionadas
 
-  -Carpetas para datos, scripts, modelos y notebooks
+### 3. Aplicación interactiva (`streamlit_app.py`)
 
-  -Makefile para automatizar comandos: install, notebook, train, lint, clean
+- Formulario dinámico para ingresar las características del alojamiento
+- Carga automática del modelo y variables
+- Predicción de `Log_Price` y conversión a escala real (`Price`)
+- Botón para descargar resultados en formato CSV
 
-- Incorporación de datos
+---
 
-  -Dataset real cargado manualmente en data/raw/
+## 📈 Resultados
 
-  -Confirmado que el tamaño (60 MB) es apto para subirlo al repositorio de github
+Modelo seleccionado: **Random Forest**
+
+| Modelo                  | R²    | MAE    | RMSE   |
+|-------------------------|-------|--------|--------|
+| Random Forest (raw)     | 0.98  | 0.04   | 0.11   |
+| Gradient Boosting (raw) | 0.95  | 0.11   | 0.15   |
+| Linear Regression       | 0.74  | 0.27   | 0.35   |
+
+---
+
+## 🚀 Cómo ejecutar la app
+
+1. Instala las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🎯 Objetivo
+
+Predecir el precio logarítmico (`Log_Price`) de un alojamiento tipo Airbnb en base a sus características más relevantes, utilizando técnicas modernas de machine learning y análisis exploratorio de datos.
+
+---
+
+## 🧪 Flujo de trabajo
+
+### 1. Exploración y preparación de datos (`01. Exploracion...ipynb`)
+
+- Limpieza de columnas con alto porcentaje de valores faltantes
+- Transformación de fechas y extracción de variables temporales
+- Ingeniería de características: ratios, flags y log transformaciones
+- Imputación de valores faltantes
+- Detección de outliers mediante métodos estadísticos (Z-score, IQR, Isolation Forest)
+- Análisis de colinealidad y reducción mediante VIF
+
+### 2. Modelado y validación (`02. Entrenamiento...ipynb`)
+
+- Comparación de modelos: `Linear Regression`, `Random Forest`, `Gradient Boosting`
+- Entrenamiento sobre variable objetivo transformada (`Log_Price`)
+- Evaluación con métricas: `R²`, `RMSE`, `MAE`
+- Selección final del modelo basado en desempeño
+- Exportación del modelo entrenado y variables seleccionadas
+
+### 3. Aplicación interactiva (`streamlit_app.py`)
+
+- Formulario dinámico para ingresar las características del alojamiento
+- Carga automática del modelo y variables
+- Predicción de `Log_Price` y conversión a escala real (`Price`)
+- Botón para descargar resultados en formato CSV
+
+---
+
+## 📈 Resultados
+
+Modelo seleccionado: **Random Forest**
+
+| Modelo                  | R²    | MAE    | RMSE   |
+|-------------------------|-------|--------|--------|
+| Random Forest (raw)     | 0.98  | 0.04   | 0.11   |
+| Gradient Boosting (raw) | 0.95  | 0.11   | 0.15   |
+| Linear Regression       | 0.74  | 0.27   | 0.35   |
+
+---
