@@ -1,4 +1,4 @@
-# streamlit_app.py - versión robusta con Path
+# streamlit_app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,7 +18,7 @@ with open(vars_path) as f:
     columnas_modelo = f.read().splitlines()
 
 # Título y entrada interactiva
-st.title("Predicción de precios con modelo Stacking")
+st.title("Predicción de precios")
 
 if "ejemplo" not in st.session_state:
     st.session_state.ejemplo = pd.DataFrame({col: [0.0] for col in columnas_modelo})
