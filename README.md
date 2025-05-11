@@ -27,18 +27,17 @@ airbnb-pricing-ml/
 
 Proyecto ejecutado y probado con Python 3.12 y las siguientes dependencias clave:
 
-numpy==1.23.*
-pandas==1.5.*
-scipy==1.9.*
-matplotlib==3.6.*
-seaborn==0.12.*
-plotly==5.13.*
-scikit-learn==1.1.3
-jupyterlab==3.4.*
-shap==0.41.*
-xgboost==1.7.*
-lightgbm==4.6.0
-ruff==0.0.270
+- numpy==1.23.*
+- pandas==1.5.*
+- scipy==1.9.*
+- matplotlib==3.6.*
+- seaborn==0.12.*
+- plotly==5.13.*
+- scikit-learn==1.1.3
+- jupyterlab==3.4.*
+- xgboost==1.7.*
+- lightgbm==4.6.0
+- ruff==0.0.270
 
 ---
 
