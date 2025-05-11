@@ -42,69 +42,13 @@ ruff==0.0.270
 
 ---
 
-## 🎯 Objetivo
+##  Objetivo
 
 Predecir el precio logarítmico (`Log_Price`) de un alojamiento tipo Airbnb en base a sus características más relevantes, utilizando técnicas modernas de machine learning y análisis exploratorio de datos.
 
 ---
 
-## 🧪 Flujo de trabajo
-
-### 1. Exploración y preparación de datos (`01. Exploracion...ipynb`)
-
-- Limpieza de columnas con alto porcentaje de valores faltantes
-- Transformación de fechas y extracción de variables temporales
-- Ingeniería de características: ratios, flags y log transformaciones
-- Imputación de valores faltantes
-- Detección de outliers mediante métodos estadísticos (Z-score, IQR, Isolation Forest)
-- Análisis de colinealidad y reducción mediante VIF
-
-### 2. Modelado y validación (`02. Entrenamiento...ipynb`)
-
-- Comparación de modelos: `Linear Regression`, `Random Forest`, `Gradient Boosting`
-- Entrenamiento sobre variable objetivo transformada (`Log_Price`)
-- Evaluación con métricas: `R²`, `RMSE`, `MAE`
-- Selección final del modelo basado en desempeño
-- Exportación del modelo entrenado y variables seleccionadas
-
-### 3. Aplicación interactiva (`streamlit_app.py`)
-
-- Formulario dinámico para ingresar las características del alojamiento
-- Carga automática del modelo y variables
-- Predicción de `Log_Price` y conversión a escala real (`Price`)
-- Botón para descargar resultados en formato CSV
-
----
-
-## 📈 Resultados
-
-Modelo seleccionado: **Random Forest**
-
-| Modelo                  | R²    | MAE    | RMSE   |
-|-------------------------|-------|--------|--------|
-| Random Forest (raw)     | 0.98  | 0.04   | 0.11   |
-| Gradient Boosting (raw) | 0.95  | 0.11   | 0.15   |
-| Linear Regression       | 0.74  | 0.27   | 0.35   |
-
----
-
-## 🚀 Cómo ejecutar la app
-
-1. Instala las dependencias:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 🎯 Objetivo
-
-Predecir el precio logarítmico (`Log_Price`) de un alojamiento tipo Airbnb en base a sus características más relevantes, utilizando técnicas modernas de machine learning y análisis exploratorio de datos.
-
----
-
-## 🧪 Flujo de trabajo
+##  Flujo de trabajo
 
 ### 1. Exploración y preparación de datos (`01. Exploracion...ipynb`)
 
@@ -135,7 +79,7 @@ streamlit run notebooks/streamlit_app.py  http://localhost:8501
 
 ---
 
-## 📈 Resultados
+## Resultados
 
 Modelo seleccionado: **Random Forest**
 
@@ -146,3 +90,14 @@ Modelo seleccionado: **Random Forest**
 | Linear Regression       | 0.74  | 0.27   | 0.35   |
 
 ---
+
+##  Cómo ejecutar la app
+
+1. Instala las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
