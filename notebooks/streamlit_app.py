@@ -1,4 +1,3 @@
-# streamlit_app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,42 +5,57 @@ import joblib
 from pathlib import Path
 
 # Calcular rutas absolutas desde la ubicación del script
-base_path = Path(__file__).resolve().parents[1]
-model_path = base_path / "models" / "final_model_stacked.pkl"
-vars_path = base_path / "models" / "vars_seleccionadas.txt"
+base_path = Path(__file__).resolve().parent
+model_path = base_path.parent / "models" / "final_model.pkl"
+vars_path = base_path.parent / "models" / "vars_seleccionadas.txt"
 
-# Cargar modelo entrenado
-st_model = joblib.load(model_path)
+# --- Cargar modelo entrenado ---
+try:
+    st_model = joblib.load(model_path)
+except FileNotFoundError:
+    st.error(f"No se encontró el modelo en: {model_path}")
+    st.stop()
 
-# Cargar columnas usadas en entrenamiento
-with open(vars_path) as f:
-    columnas_modelo = f.read().splitlines()
+# --- Cargar columnas usadas en entrenamiento ---
+try:
+    with open(vars_path, "r") as f:
+        columnas_modelo = f.read().splitlines()
+except FileNotFoundError:
+    st.error(f"No se encontró el archivo de columnas: {vars_path}")
+    st.stop()
 
-# Título y entrada interactiva
-st.title("Predicción de precios")
+# --- UI de la app ---
+st.title("Práctica de predicción de precios ML101")
 
 if "ejemplo" not in st.session_state:
     st.session_state.ejemplo = pd.DataFrame({col: [0.0] for col in columnas_modelo})
 
-st.write("### Ingresa los datos del nuevo alojamiento para predecir el precio:")
+st.write("Ingresa los datos del alojamiento para predecir el precio:")
 df_input = st.data_editor(st.session_state.ejemplo, num_rows="dynamic")
 
-# Validar columnas
+# Validar columnas necesarias
 missing_cols = [col for col in columnas_modelo if col not in df_input.columns]
 if missing_cols:
-    st.error(f"Faltan columnas: {missing_cols}")
+    st.error(f"Faltan columnas requeridas por el modelo: {missing_cols}")
 else:
     if st.button("Predecir precio"):
-        y_pred_log = st_model.predict(df_input[columnas_modelo])
-        y_pred = np.expm1(y_pred_log)
+        try:
+            y_pred_log = st_model.predict(df_input[columnas_modelo])
+            y_pred = np.expm1(y_pred_log)
 
-        df_output = df_input.copy()
-        df_output["Price_log_predicho"] = y_pred_log
-        df_output["Price_predicho"] = y_pred
+            st.success("Predicción completada")
+            st.write(f"Precio estimado: ${y_pred[0]:,.2f}")
 
-        st.success("✅ Predicción completada")
-        st.write(df_output)
+            # Para descarga
+            df_output = df_input.copy()
+            df_output["Log_Price_Predicho"] = y_pred_log
+            df_output["Price_Predicho"] = y_pred
 
-        # Descargar resultados
-        csv = df_output.to_csv(index=False).encode("utf-8")
-        st.download_button("Descargar resultados", csv, "predicciones.csv", "text/csv")
+            csv = df_output.to_csv(index=False).encode("utf-8")
+            st.download_button("Descargar resultados", csv, "predicciones.csv", "text/csv")
+        except Exception as e:
+            st.error(f"Error al predecir: {e}")
+
+# Firma
+st.markdown("---")
+st.markdown("Aplicación desarrollada por **Ulises González**, Panamá 2025")
