@@ -15,8 +15,8 @@ airbnb-pricing-ml/
 ├── src/
 │ ├── preprocessing.py # Funciones de carga y limpieza
 │ └── train_model.py # Entrenamiento de modelo
-├── models/ # Modelos entrenados (.pkl)
-├── reports/ # Visualizaciones, métricas, resumenes
+├── models/ # Modelos entrenados (.pkl) 
+├── reports/ # Visualizaciones, métricas, resumenes (no lo utilice)
 ├── .gitignore # Exclusiones estándar
 ├── Makefile # Comandos automatizados
 ├── requirements.txt # Dependencias del entorno
@@ -123,9 +123,12 @@ Predecir el precio logarítmico (`Log_Price`) de un alojamiento tipo Airbnb en b
 - Selección final del modelo basado en desempeño
 - Exportación del modelo entrenado y variables seleccionadas
 
-### 3. Aplicación interactiva (`streamlit_app.py`)
+### 3. Aplicación interactiva (`streamlit_app.py`) / (en construcción tengo problemas en el deploy con un error de dependencias que no he logrado resolver)
 
 - Formulario dinámico para ingresar las características del alojamiento
+```bash
+streamlit run notebooks/streamlit_app.py  http://localhost:8501
+```
 - Carga automática del modelo y variables
 - Predicción de `Log_Price` y conversión a escala real (`Price`)
 - Botón para descargar resultados en formato CSV
